@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#131310">
+  <meta name="description" content="One Day More — A kinetic typography tribute to Les Misérables. Seven lives, one approaching dawn.">
+  <title>ONE DAY MORE — A Kinetic Tribute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Bodoni+Moda:ital,wght@0,600;0,700;0,800;1,600;1,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23131310'/%3E%3Ctext x='11' y='48' font-family='Georgia' font-size='52' fill='%23ee4934'%3EM%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <main id="app">
+    <canvas id="film" aria-label="One Day More 키네틱 타이포그래피 모션그래픽"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="masthead">
+      <a class="brand" href="#" aria-label="처음으로"><span class="brand-mark">M<span>•</span></span><span>LES MISÉRABLES<br><small>A KINETIC TRIBUTE</small></span></a>
+      <span class="edition">PARIS, 1832 <i></i> THE EVE OF EVERYTHING</span>
+      <button id="about-button" class="text-button">THE CONCEPT <span>↗</span></button>
+    </header>
+    <section class="intro" id="intro">
+      <div class="eyebrow"><span class="tiny-line"></span> A MUSICAL IN MOTION <span class="edition-no">№ 001</span></div>
+      <h1><span>ONE</span><span>DAY <em>MORE</em><b>•</b></span></h1>
+      <div class="intro-bottom">
+        <div class="intro-description"><span class="red-dot"></span><p>Seven lives. One approaching dawn.<br><span>일곱 개의 삶, 하나의 내일.</span></p></div>
+        <button id="begin" class="begin"><span class="play-circle">▶</span><span>ENTER THE STORY<small>음악과 함께 감상하기</small></span><span class="begin-arrow">↗</span></button>
+        <div class="runtime"><span>AN AUDIOVISUAL EXPERIENCE</span><strong>03:55 <span>/</span> VIII CHAPTERS</strong></div>
+      </div>
+    </section>
+    <div id="scene-caption" class="scene-caption" aria-live="polite"><span id="scene-number">I / VIII</span><p id="scene-name">THE EVE</p><small id="scene-subtitle">A city holds its breath.</small></div>
+    <div id="recording" class="recording" hidden><div class="recording-heading"><span class="red-dot"></span> ORIGINAL PERFORMANCE <button id="recording-info" title="음원 설정" aria-label="음원 설정">↗</button></div><div id="youtube-player"></div></div>
+    <div class="side-note" aria-hidden="true">LIBERTÉ · AMOUR · DESTIN</div>
+    <footer class="transport">
+      <div class="transport-top"><button id="play" class="icon-button" aria-label="재생">▶</button><span id="time">00:00</span><span class="time-divider">/</span><span id="duration">03:55</span><span id="status" role="status">READY WHEN YOU ARE</span><button id="chapters-button" class="text-button">CHAPTERS <span>☷</span></button><button id="sound-button" class="text-button">SOUND <span id="sound-icon">◖))</span></button><button id="fullscreen" class="icon-button" aria-label="전체 화면">⛶</button></div>
+      <div class="scrub-wrap"><div class="chapter-ticks" id="chapter-ticks"></div><input id="scrub" type="range" min="0" max="235" step="0.05" value="0" aria-label="영상 재생 위치"></div>
+      <div class="transport-bottom"><span id="current-chapter">01 — THE EVE</span><span class="keyboard-hint">SPACE TO PLAY <i>·</i> F FOR FULLSCREEN</span><span>KINETIC TYPOGRAPHY / 2026</span></div>
+    </footer>
+    <dialog id="chapters-dialog"><div class="dialog-header"><span>THE NARRATIVE</span><button class="close" aria-label="닫기">×</button></div><h2>Eight moments.<br><em>One tomorrow.</em></h2><div id="chapter-list"></div><p class="dialog-footnote">각 장면을 선택하면 해당 순간으로 이동합니다.</p></dialog>
+    <dialog id="sound-dialog"><div class="dialog-header"><span>LISTEN CLOSELY</span><button class="close" aria-label="닫기">×</button></div><h2>A story made<br><em>of voices.</em></h2><label class="source-option"><input type="radio" name="source" value="youtube" checked><span>One Day More<small>TUNE · 25th Anniversary Concert · YouTube</small></span><span>↗</span></label><label class="source-option"><input type="radio" name="source" value="local"><span>Your recording<small>소장한 원곡 파일로 감상 · MP3 / WAV / M4A</small></span><span>＋</span></label><input id="audio-file" type="file" accept="audio/*" hidden><button id="choose-file" class="file-button">음원 파일 선택 <span id="file-name">↗</span></button><label class="source-option"><input type="radio" name="source" value="study"><span>Before the dawn<small>별도 창작 기악곡 · 원곡 아님 · 오프라인 감상</small></span><span>♪</span></label><div class="volume-row"><button id="mute" aria-label="음소거">◖))</button><input id="volume" type="range" min="0" max="1" step="0.01" value="0.75" aria-label="볼륨"><span id="volume-value">75%</span></div><label class="motion-option"><input id="reduced-motion" type="checkbox"> 부드러운 움직임 모드</label><p class="dialog-footnote" id="audio-note">원곡은 인터넷 연결과 YouTube 재생 허용이 필요합니다.<br>재생이 제한되면 소장 음원을 불러올 수 있습니다.</p></dialog>
+    <dialog id="about-dialog"><div class="dialog-header"><span>BEHIND THE TYPE</span><button class="close" aria-label="닫기">×</button></div><div class="about-number">1832</div><h2>The night before<br><em>everything.</em></h2><p class="about-copy">내일 앞에서, 모든 삶은 하나의 질문이 됩니다.<br><br>도망자의 기억. 연인의 거리. 혼자 삼킨 사랑.<br>혁명의 불꽃과 질서의 그림자.<br><br>각기 다른 활자와 움직임으로 시작한 일곱 목소리가<br>하나의 거대한 화면으로 모이는 타이포그래피 헌정작입니다.</p><div class="credits"><span>INSPIRED BY</span><strong>Les Misérables — One Day More</strong><span>MUSIC</span><p>Claude-Michel Schönberg<br>Alain Boublil · Jean-Marc Natel · Herbert Kretzmer</p><a href="https://www.youtube.com/watch?v=wNNBrg4u9d0" target="_blank" rel="noopener noreferrer">TUNE의 원곡 공연 보기 ↗</a></div><p class="dialog-footnote">UNOFFICIAL ARTISTIC TRIBUTE · Original interpretive typography<br>화면 문구는 작품의 주제를 바탕으로 새로 쓴 글입니다.</p></dialog>
+    <div id="toast" role="status"></div>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
